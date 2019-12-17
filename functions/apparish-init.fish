@@ -22,7 +22,7 @@
 # Thank you for using free software!
 
 
-set APPARIXVERSION 1.0
+set APPARIXVERSION 1.1.0
 set -q APPARIXHOME; or set APPARIXHOME $HOME
 
 set APPARIXRC     $APPARIXHOME/.apparixrc
@@ -355,14 +355,26 @@ function apparish-help -d "Display help for Appari-Fish"
 
   Appari-Fish is a fish-shell port of apparix (and apparish).  For your
   convenience, they all use the same commands and resource files.
+  '
 
-  To install, open the fish shell, run `fisher add mzuther/appari-fish`
-  and create the necessary resource files by running `apparish-init`.
+    __apparish_display_chapter "Installation"
 
-  Then go to a directory and call `bm foo`.  From now on, you can go to
-  that directory by issuing `to foo`.  Appari-Fish uses the most recent
-  mark if identical bookmarks exist.  Thus, you may use a bookmark such
-  as `now` for a target that changes often.  Also, check out `to -`!
+    echo '
+
+  Open the fish shell, run `fisher add mzuther/appari-fish` and create
+  the necessary resource files by running `apparish-init`.
+  '
+
+    __apparish_display_chapter "Documentation"
+
+    echo '
+
+  Use the command `apparish-help` to display this documentation.
+
+  Enter a directory and call `bm foo`.  From now on, you can go to that
+  directory by issuing `to foo`.  Appari-Fish uses the most recent mark
+  if identical bookmarks exist.  Thus, you could use a generic bookmark
+  such as `now` for targets that change often.  Also, check out `to -`!
 
   I recommend you try the tab completion.  To use the editing commands,
   set the shell variable `$EDITOR` to your favourite editor.
@@ -405,6 +417,7 @@ function apparish-help -d "Display help for Appari-Fish"
     __apparish_display_usage "rme MARK [SUBDIR]"
     __apparish_display_usage "todo MARK [SUBDIR]"
 
+    __apparish_display_separator
     echo
 end
 
@@ -424,6 +437,8 @@ function apparish-version -d "Display license and version for Appari-Fish"
     set_color normal
     set_color -o
     echo "
+                             Version $APPARIXVERSION
+
 
   Copyright (c) 2019 Martin Zuther (http://www.mzuther.de/)"
 
@@ -537,6 +552,16 @@ function __apparish_display_usage -d "Display usage and description of apparish 
     printf "  %-25s" $usage
     set_color normal
     printf "%s\n" $description
+end
+
+
+
+function __apparish_display_chapter -d "Display chapter name"
+    set chapter_name "$argv[1]"
+
+    set_color -o
+    echo -n " " $chapter_name
+    set_color normal
 end
 
 
