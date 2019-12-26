@@ -1,4 +1,4 @@
-#!/usr/bin/fish
+#!/usr/bin/env fish
 
 # Appari-Fish
 # ===========
@@ -22,7 +22,7 @@
 # Thank you for using free software!
 
 
-set APPARIXVERSION 1.1.0
+set APPARIXVERSION 1.1.1
 set -q APPARIXHOME; or set APPARIXHOME $HOME
 
 set APPARIXRC     $APPARIXHOME/.apparixrc
